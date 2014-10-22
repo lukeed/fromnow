@@ -1,0 +1,27 @@
+{
+  "name": "lukeed-fromNow",
+  "version": "1.0.0",
+  "description": "An extremely lightweight javascript utility for calculating readable time differences from now and past or future dates.",
+  "main": "fromNow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukeed/fromNow.git"
+  },
+  "keywords": [
+    "date",
+    "time",
+    "parse",
+    "format",
+    "from now",
+    "fromNow"
+  ],
+  "author": "Luke Edwards",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukeed/fromNow/issues"
+  },
+  "homepage": "https://github.com/lukeed/fromNow"
+}
