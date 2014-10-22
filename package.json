@@ -1,5 +1,5 @@
 {
-  "name": "lukeed-fromNow",
+  "name": "fromNow",
   "version": "1.0.0",
   "description": "An extremely lightweight javascript utility for calculating readable time differences from now and past or future dates.",
   "main": "fromNow.js",
