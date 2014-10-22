@@ -69,6 +69,15 @@ Eg: `1 year, 4 hours, 16 minutes` vs `1 year, 4 hours, and 16 minutes`<br>
 Eg: `2 days, 12 hours` vs `2 days and 12 hours`<br>
 
 
+## Installation
+
+Install with [Bower](http://bower.io) `bower install fromNow`
+
+Install with [NPM](http://nodejs.org/) `npm install lukeed-fromnow`
+
+Install with Git `git clone https://github.com/lukeed/fromNow.git`
+
+
 ## MIT license
 
 fromNow.js is released under the [MIT license](http://lukeed.mit-license.org).
