@@ -52,21 +52,15 @@ fromNow(future, 2, false, true); // "2 months and 16 hours"
 Type: string. Required.<br>
 Date string to be calculated.
 
-<br>
-
 **maxChunks**<br>
 Type: Integer. Optional. Default: all<br>
 Limits the returned string to contain # of not-null segments. Gathers largest to smallest.<br>
 Eg: `1 month, 0 hours, 57 minutes` limited to 2 chunks returns `1 month, 57 minutes`
 
-<br>
-
 **useAgo**<br>
 Type: Boolean. Optional. Default: false<br>
 If given date occured before current datetime, append `'ago'` to returned string.<br>
 Eg: `3 months, 16 minutes` vs `3 months, 16 minutes ago`
-
-<br>
 
 **useAnd**<br>
 Type: Boolean. Optional. Default: false<br>
