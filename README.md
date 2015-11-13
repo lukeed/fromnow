@@ -1,11 +1,13 @@
 # FromNow
 > An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.
 
-fromNow.js only has 1 **required** parameter, a date string. You may pass it **any valid datestring**.
+2 kb uncompressed. <1 kb minified (before gzip)
 
 ```javascript
 fromNow(date [, options]);
 ```
+
+fromNow.js only has 1 **required** parameter, a date string. You may pass it **any valid datestring**.
 
 ## Installation
 
