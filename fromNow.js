@@ -1,32 +1,27 @@
 /**
- * fromNow.js v1.0.0
- * http://www.lukeed.com
+ * FromNow
+ * > Get readable time differences from now vs past or future dates.
  *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- *
- * Copyright 2014, LUKEED
- * http://www.lukeed.com
+ * @author  Luke Edwards
+ * @url     www.lukeed.com
+ * @version 2.0
  */
-// var defaults = {
-//   maxChunks: 10,
-//   useSuffix: false,
-//   useAnd: false
-// }
 
-(function ( root, factory ) {
-  if ( typeof exports === 'object' ) {
-    // Common JS
-    module.exports = factory(root, root.document);
+(function (root, factory) {
+  if (typeof exports === 'object') {
+    module.exports = factory(root, root.document); // Common JS
   } else if ( typeof define === 'function' && define.amd ) {
-    // AMD
-    define(function() { return factory(root, root.document); });
+    define(function() { return factory(root, root.document); }); // AMD
   } else {
-    // Browser global
-    root.fromNow = factory(root, root.document);
+    root.fromNow = factory(root, root.document); // window global
   }
 }(typeof window !== 'undefined' ? window : this, function (window, document) {
   'use strict';
+
+  function pluralize(val, str) {
+    var label = (val > 1) ? (str + 's') : str
+    return val ? (val + ' ' + label) : null
+  }
 
   var msMinute = 60 * 1000,
     msHour = msMinute * 60,
@@ -34,16 +29,18 @@
     msMonth = msDay * 30,
     msYear = msDay * 365;
 
-  function pluralize(val, str) {
-    var label = (val > 1) ? (str + 's') : str
-    return val ? (val + ' ' + label) : null
+  var defaults = {
+    maxChunks: 10,
+    useAgo: false,
+    useAnd: false
   }
 
-  return function (date, maxChunks, useAgo, useAnd) {
+  return function (date, opts) {
     // set default values if left undefined
-    maxChunks = maxChunks || 10;
-    useAgo = useAgo || false;
-    useAnd = useAnd || false;
+    opts = opts || {};
+    var maxChunks = opts.maxChunks || 10;
+    var useAgo = opts.useAgo || false;
+    var useAnd = opts.useAnd || false;
 
     var milli = (new Date(date) - new Date()),
         ms = Math.abs(milli);
