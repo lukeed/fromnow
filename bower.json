@@ -1,12 +1,12 @@
 {
   "name": "fromNow",
   "main": "fromNow.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/lukeed/fromNow",
   "authors": [
     "Luke Edwards"
   ],
-  "description": "An extremely lightweight javascript utility for calculating readable time differences from now and past or future dates.",
+  "description": "An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.",
   "keywords": [
     "date",
     "time",
