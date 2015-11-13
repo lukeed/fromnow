@@ -62,9 +62,12 @@
     }
 
     // Limit the returned array to return 'maxChunks' of non-null segments
-    var compiled = [], i, len = chunks.length;
+    var compiled = [], i, limit = 0, len = chunks.length;
     for (i = 0; i < len; i++) {
-      if (chunks[i] && i < maxChunks) compiled.push(chunks[i]);
+      if (chunks[i] && limit < maxChunks) {
+        limit++;
+        compiled.push(chunks[i]);
+      }
     }
 
     len = compiled.length;
