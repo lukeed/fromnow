@@ -3,7 +3,7 @@
  * @author  Luke Edwards (www.lukeed.com)
  * @version 2.1.1
  */
-;(function (root, factory) {
+(function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(factory);
 	} else if (typeof exports === 'object') {
@@ -28,7 +28,7 @@
 		opts = opts || {};
 
 		var milli = (new Date(date) - new Date()),
-				ms = Math.abs(milli);
+			ms = Math.abs(milli);
 
 		if (ms < msMinute) return 'just now';
 
@@ -64,5 +64,5 @@
 		}
 
 		return compiled.join(', ') + sfx;
-	}
+	};
 }));
