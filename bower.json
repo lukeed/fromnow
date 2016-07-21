@@ -1,26 +1,25 @@
 {
   "name": "fromNow",
-  "main": "fromNow.js",
-  "version": "2.0.0",
-  "homepage": "https://github.com/lukeed/fromNow",
-  "authors": [
-    "Luke Edwards"
-  ],
+  "main": "fromNow.min.js",
   "description": "An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.",
+  "homepage": "https://github.com/lukeed/fromNow",
+  "license": "MIT",
+  "authors": [
+    "Luke Edwards <luke@lukeed.com>"
+  ],
   "keywords": [
+    "ago",
     "date",
     "time",
     "parse",
     "format",
+    "moment",
     "from now",
-    "fromNow"
+    "fromnow"
   ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ]
 }
