@@ -1,4 +1,5 @@
-# FromNow
+# FromNow [![Build Status](https://travis-ci.org/lukeed/fromNow.svg?branch=master)](https://travis-ci.org/lukeed/fromNow)
+
 > An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.
 
 2 kb uncompressed. <1 kb minified (before gzip)
@@ -37,7 +38,7 @@ Eg: `2 days, 12 hours` vs `2 days and 12 hours`<br>
 
 ## Usage
 ### Default
-fromNow.js assumes that you only want the time difference (string), so it will yield all values. 
+fromNow.js assumes that you only want the time difference (string), so it will yield all values.
 
 ```javascript
 fromNow('12/31/2010'); // "4 years, 10 months, 8 days, 10 hours, 15 minutes"
