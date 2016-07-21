@@ -10,10 +10,10 @@
     "url": "lukeed.com"
   },
   "scripts": {
+    "build": "uglifyjs fromNow.js -c -m -o fromNow.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "fromNow.min.js",
-  "repository": {
   "files": [
     "*.js"
   ],
@@ -28,7 +28,6 @@
     "fromnow"
   ],
   "devDependencies": {
-  "bugs": {
-    "url": "https://github.com/lukeed/fromNow/issues"
-  },
+    "uglify-js": "^2.7.0"
+  }
 }
