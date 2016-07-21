@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "uglifyjs fromNow.js -c -m -o fromNow.min.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo"
   },
   "main": "fromNow.min.js",
   "files": [
@@ -28,6 +28,19 @@
     "fromnow"
   ],
   "devDependencies": {
-    "uglify-js": "^2.7.0"
+    "uglify-js": "^2.7.0",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "envs": ["browser", "node", "amd"],
+    "rules": {
+      "one-var-declaration-per-line": 1,
+      "no-unused-expressions": 1,
+      "xo/filename-case": 0,
+      "guard-for-in": 1,
+      "wrap-iife": 0,
+      "one-var": 0,
+      "curly": 1
+    }
   }
 }
