@@ -30,7 +30,7 @@
     var milli = (new Date(date) - new Date()),
         ms = Math.abs(milli);
 
-    if (ms === 0) return 'just now';
+    if (ms < msMinute) return 'just now';
 
     var timeframes = {
       year: Math.floor(ms / msYear),
