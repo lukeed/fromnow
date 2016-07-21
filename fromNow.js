@@ -1,8 +1,7 @@
 /**
  * FromNow - Get readable time differences from now vs past or future dates.
- * @author  Luke Edwards
- * @url     www.lukeed.com
- * @version 2.0
+ * @author  Luke Edwards (www.lukeed.com)
+ * @version 2.1
  */
 ;(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
