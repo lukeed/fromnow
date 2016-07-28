@@ -46,9 +46,9 @@
 			chunks.push(pluralize(val, period));
 		}
 
-		// Limit the returned array to return 'maxChunks' of non-null segments
+		// Limit the returned array to return 'max' of non-null segments
 		var compiled = [], i, len = chunks.length,
-			limit = 0, max = opts.maxChunks || 10;
+			limit = 0, max = opts.max || 10;
 		for (i = 0; i < len; i++) {
 			if (chunks[i] && limit < max) {
 				limit++;
@@ -56,9 +56,9 @@
 			}
 		}
 
-		var sfx = (opts.useAgo && milli < 0) ? ' ago' : '';
+		var sfx = (opts.ago && milli < 0) ? ' ago' : '';
 
-		if (opts.useAnd && limit > 1) {
+		if (opts.and && limit > 1) {
 			if (limit === 2) return compiled.join(' and ') + sfx;
 			compiled[limit - 1] = 'and ' + compiled[limit - 1];
 		}
