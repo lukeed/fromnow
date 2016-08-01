@@ -97,30 +97,30 @@ fromNow('2030-05-20', {
 #### Indicate Past Tense
 ```javascript
 fromNow('12/31/2010', {
-	max: 3,
-	ago: true
+  max: 3,
+  ago: true
 }); //=> "4 years, 10 months, 8 days ago"
 ```
 
 #### Include 'and' in the Output
 ```javascript
 fromNow('12/31/2010', {
-	max: 3,
-	ago: true,
-	ang: true
+  max: 3,
+  ago: true,
+  and: true
 }); //=> "4 years, 10 months, and 8 days ago"
 
 fromNow('Wed, 20 Nov 1912 00:00:00 GMT', {
   max: 2,
   ago: true,
-  ang: true
+  and: true
 }); //=> "103 years and 23 days ago"
 
 // Does not need 'ago' or 'and'
 fromNow('2030-05-20', {
   max: 1,
   ago: true,
-  ang: true
+  and: true
 }); //=> "14 years"
 ```
 
