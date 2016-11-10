@@ -1,6 +1,6 @@
 {
   "name": "fromnow",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.",
   "license": "MIT",
   "repository": "lukeed/fromNow",
@@ -32,7 +32,11 @@
     "xo": "^0.16.0"
   },
   "xo": {
-    "envs": ["browser", "node", "amd"],
+    "envs": [
+      "browser",
+      "node",
+      "amd"
+    ],
     "rules": {
       "one-var-declaration-per-line": 1,
       "no-unused-expressions": 1,
