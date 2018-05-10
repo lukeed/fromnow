@@ -30,9 +30,7 @@
 		var milli = (new Date(date) - new Date()),
 			ms = Math.abs(milli);
 
-		if (ms < msMinute) {
-			return 'just now';
-		}
+		if (ms < msMinute) return 'just now';
 
 		var timeframes = {
 			year: Math.floor(ms / msYear),
@@ -42,23 +40,15 @@
 			minute: Math.floor((ms % msHour) / msMinute)
 		};
 
-		var chunks = [],
-			period,
-			val;
+		var chunks=[], period, val;
 		for (period in timeframes) {
-			if (period) {
-				val = timeframes[period];
-				chunks.push(pluralize(val, period));
-			}
+			val = timeframes[period];
+			chunks.push(pluralize(val, period));
 		}
 
 		// Limit the returned array to return 'max' of non-null segments
-		var compiled = [],
-			i,
-			len = chunks.length,
-			limit = 0,
-			max = opts.max || 10;
-		for (i = 0; i < len; i++) {
+		var i=0, limit=0, compiled=[], len=chunks.length, max=opts.max || 10;
+		for (; i < len; i++) {
 			if (chunks[i] && limit < max) {
 				limit++;
 				compiled.push(chunks[i]);
@@ -68,9 +58,7 @@
 		var sfx = (opts.ago && milli < 0) ? ' ago' : '';
 
 		if (opts.and && limit > 1) {
-			if (limit === 2) {
-				return compiled.join(' and ') + sfx;
-			}
+			if (limit === 2) return compiled.join(' and ') + sfx;
 			compiled[limit - 1] = 'and ' + compiled[limit - 1];
 		}
 
