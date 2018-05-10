@@ -2,7 +2,7 @@ const test = require('tape');
 const fn = require('../fromNow');
 
 const DATE = global.Date;
-const target = 'Sun Jun 14 2015 15:12:05 GMT-0700';
+const target = 'Sun Jun 14 2015 15:12:05';
 
 global.Date = class Mock extends DATE {
   constructor(val) {

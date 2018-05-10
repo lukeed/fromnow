@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "uglifyjs fromNow.js -c -m -o fromNow.min.js",
-    "test": "tape test/*.js | tap-spec"
+    "test": "TZ=America/Los_Angeles tape test/*.js | tap-spec"
   },
   "keywords": [
     "ago",
