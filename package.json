@@ -2,21 +2,21 @@
   "name": "fromnow",
   "version": "2.2.1",
   "description": "An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.",
-  "license": "MIT",
   "repository": "lukeed/fromNow",
-  "author": {
-    "name": "Luke Edwards",
-    "email": "luke@lukeed.com",
-    "url": "lukeed.com"
-  },
-  "scripts": {
-    "build": "uglifyjs fromNow.js -c -m -o fromNow.min.js",
-    "test": "xo"
-  },
   "main": "fromNow.min.js",
+  "license": "MIT",
   "files": [
     "*.js"
   ],
+  "author": {
+    "name": "Luke Edwards",
+    "email": "luke@lukeed.com",
+    "url": "https://lukeed.com"
+  },
+  "scripts": {
+    "build": "uglifyjs fromNow.js -c -m -o fromNow.min.js",
+    "test": "TZ=America/Los_Angeles tape test/*.js | tap-spec"
+  },
   "keywords": [
     "ago",
     "date",
@@ -28,23 +28,8 @@
     "fromnow"
   ],
   "devDependencies": {
-    "uglify-js": "^2.7.0",
-    "xo": "^0.16.0"
-  },
-  "xo": {
-    "envs": [
-      "browser",
-      "node",
-      "amd"
-    ],
-    "rules": {
-      "one-var-declaration-per-line": 1,
-      "no-unused-expressions": 1,
-      "xo/filename-case": 0,
-      "guard-for-in": 1,
-      "wrap-iife": 0,
-      "one-var": 0,
-      "curly": 1
-    }
+    "tap-spec": "^4.1.1",
+    "tape": "^4.9.0",
+    "uglify-js": "^2.7.0"
   }
 }
