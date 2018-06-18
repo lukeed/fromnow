@@ -43,7 +43,10 @@
 		var chunks=[], period, val;
 		for (period in timeframes) {
 			val = timeframes[period];
-			chunks.push(pluralize(val, period));
+			if(!opts.rejectEmptyPeriod || val !== 0) {
+				var formatter = opts.dateFormatter || pluralize
+				chunks.push(formatter(val, period));
+			}
 		}
 
 		// Limit the returned array to return 'max' of non-null segments
