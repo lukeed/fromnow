@@ -58,3 +58,15 @@ test('fromNow :: options.and', t => {
   t.is( fn('12/31/2030', { max:1, ago:true, and:true }), '15 years', '~> omits "and" for 1 segment');
   t.end();
 });
+
+test('fromNow :: options.rejectEmptyPeriod', t => {
+  t.is( fn('2015-06-13', { rejectEmptyPeriod: true }), '1 day, 22 hours, 12 minutes', '~> omits empty periods');
+  t.is( fn('2015-06-13'), '0 year, 0 month, 1 day, 22 hours, 12 minutes', '~> returns empty periods with no configuration');
+  t.end();
+});
+
+test('fromNow :: options.dateFormatter', t => {
+  const customFormatter = (val, period) => (val + period)
+  t.is( fn('12/31/2013', { dateFormatter: customFormatter }), '1year, 5month, 20day, 14hour, 12minute', '~> returns the date according to the passed formatter');
+  t.end();
+});
