@@ -1,7 +1,3 @@
-function pluralize(val, str) {
-	return val + ' ' + ((val > 1) ? (str + 's') : str);
-}
-
 var MIN = 60 * 1e3;
 var HOUR = MIN * 60;
 var DAY = HOUR * 24;
@@ -27,7 +23,9 @@ export default function (date, opts) {
 	var chunks=[], period, val;
 	for (period in timeframes) {
 		val = timeframes[period];
-		chunks.push(pluralize(val, period));
+		chunks.push(
+			val + ' ' + ((val > 1) ? (period + 's') : period)
+		);
 	}
 
 	// Limit the returned array to return 'max' of non-null segments
