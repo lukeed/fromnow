@@ -1,5 +1,5 @@
 const test = require('tape');
-const fn = require('../fromNow');
+const fn = require('../dist/fromnow');
 
 const DATE = global.Date;
 const target = 'Sun Jun 14 2015 15:12:05';

@@ -1,12 +1,14 @@
 {
   "name": "fromnow",
   "version": "2.2.1",
-  "description": "An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.",
   "repository": "lukeed/fromNow",
-  "main": "fromNow.min.js",
+  "description": "A tiny (421B) utility for calculating human-readable time differences between now and past/future dates.",
+  "unpkg": "dist/fromnow.min.js",
+  "module": "dist/fromnow.mjs",
+  "main": "dist/fromnow.js",
   "license": "MIT",
   "files": [
-    "*.js"
+    "dist"
   ],
   "author": {
     "name": "Luke Edwards",
@@ -14,7 +16,8 @@
     "url": "https://lukeed.com"
   },
   "scripts": {
-    "build": "uglifyjs fromNow.js -c -m -o fromNow.min.js",
+    "build": "node builder",
+    "pretest": "node builder",
     "test": "TZ=America/Los_Angeles tape test/*.js | tap-spec"
   },
   "keywords": [
@@ -28,8 +31,11 @@
     "fromnow"
   ],
   "devDependencies": {
+    "gzip-size": "^5.0.0",
+    "mk-dirs": "^1.0.0",
+    "pretty-bytes": "^5.1.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0",
-    "uglify-js": "^2.7.0"
+    "uglify-js": "^3.4.9"
   }
 }
