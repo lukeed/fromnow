@@ -12,15 +12,17 @@ export default function (date, opts) {
 	opts = opts || {};
 	date = new Date(date).getTime();
 
-	var delta = date - Date.now();
-	if (delta < MIN) return 'just now';
+	var del = date - Date.now();
+	var abs = Math.abs(del);
+
+	if (abs < MIN) return 'just now';
 
 	var timeframes = {
-		year: Math.floor(ms / YEAR),
-		month: Math.floor((ms % YEAR) / MONTH),
-		day: Math.floor((ms % MONTH) / DAY),
-		hour: Math.floor((ms % DAY) / HOUR),
-		minute: Math.floor((ms % HOUR) / MIN)
+		year: Math.floor(abs / YEAR),
+		month: Math.floor((abs % YEAR) / MONTH),
+		day: Math.floor((abs % MONTH) / DAY),
+		hour: Math.floor((abs % DAY) / HOUR),
+		minute: Math.floor((abs % HOUR) / MIN)
 	};
 
 	var chunks=[], period, val;
@@ -38,7 +40,7 @@ export default function (date, opts) {
 		}
 	}
 
-	var sfx = (opts.ago && delta < 0) ? ' ago' : '';
+	var sfx = (opts.ago && del < 0) ? ' ago' : '';
 
 	if (opts.and && limit > 1) {
 		if (limit === 2) return compiled.join(' and ') + sfx;
