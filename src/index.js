@@ -42,6 +42,8 @@ export default function (date, opts) {
 
 	if (opts.ago && del < 0) {
 		val += ' ago';
+	} else if (opts.future && del > 0) {
+		val += ' from now';
 	}
 
 	return val;
