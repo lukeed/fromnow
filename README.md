@@ -1,6 +1,6 @@
 # FromNow [![Build Status](https://travis-ci.org/lukeed/fromNow.svg?branch=master)](https://travis-ci.org/lukeed/fromNow)
 
-> A tiny (363B) utility for calculating human-readable time differences between now and past/future dates.
+> A tiny (379B) utility for calculating human-readable time differences between now and past/future dates.
 
 ## Install
 
@@ -80,6 +80,22 @@ If true, will join the last two segments with `" and "`.
 
 "2 days, 12 hours"
 //=> "2 days and 12 hours"
+```
+
+#### options.zero
+Type: `Boolean`<br>
+Default: `false`
+
+Return / allow segments with `0` value.
+
+```js
+// NOW = "Sun Jun 14 2015 15:12:05"
+
+fromNow("Sun Jun 14 2015 15:14:05");
+//=> "2 minutes"
+
+fromNow("Sun Jun 14 2015 15:14:05", { zero:true });
+//=> "0 year, 0 month, 0 day, 0 hour, 2 minutes"
 ```
 
 ## Examples
