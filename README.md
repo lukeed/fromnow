@@ -1,19 +1,11 @@
 # FromNow [![Build Status](https://travis-ci.org/lukeed/fromNow.svg?branch=master)](https://travis-ci.org/lukeed/fromNow)
 
-> An extremely lightweight javascript utility for calculating readable time differences from now vs past or future dates.
-
-2 kb uncompressed. <1 kb minified (before gzip)
-
-```javascript
-fromNow(date [, options]);
-```
+> A tiny (379B) utility for calculating human-readable time differences between now and past/future dates.
 
 ## Install
 
-```bash
-bower install fromnow --save
-# or
-npm install fromnow --save
+```sh
+$ npm install fromnow --save
 ```
 
 ## Usage
@@ -36,6 +28,15 @@ fromNow('Wed, 20 Nov 1912 00:00:00 GMT');
 //=> "103 years, 23 days, 18 hours, 20 minutes"
 ```
 
+## API
+
+### fromNow(date, options={})
+
+Returns: `String`
+
+A valid date string is the only **required** parameter.
+
+
 #### date
 Type: `String`
 
@@ -47,7 +48,7 @@ Default: `null`
 
 If set, will limits the return to display a *maximum* number of non-null segments.
 
-```javascript
+```js
 // default
 "1 month, 0 hours, 57 minutes"
 
@@ -62,7 +63,7 @@ Default: `false`
 
 If handling a date from the past, append `"ago"` to the output.
 
-```javascript
+```js
 "3 months, 16 minutes"
 //=> "3 months, 16 minutes ago"
 ```
@@ -73,7 +74,7 @@ Default: `false`
 
 If true, will join the last two segments with `" and "`.
 
-```javascript
+```js
 "1 year, 4 hours, 16 minutes"
 //=> "1 year, 4 hours, and 16 minutes"
 
@@ -81,10 +82,26 @@ If true, will join the last two segments with `" and "`.
 //=> "2 days and 12 hours"
 ```
 
+#### options.zero
+Type: `Boolean`<br>
+Default: `false`
+
+Return / allow segments with `0` value.
+
+```js
+// NOW = "Sun Jun 14 2015 15:12:05"
+
+fromNow("Sun Jun 14 2015 15:14:05");
+//=> "2 minutes"
+
+fromNow("Sun Jun 14 2015 15:14:05", { zero:true });
+//=> "0 year, 0 month, 0 day, 0 hour, 2 minutes"
+```
+
 ## Examples
 
 #### Limit the Output
-```javascript
+```js
 fromNow('12/31/2010', {
   max: 3
 }); //=> "4 years, 10 months, 8 days"
@@ -95,7 +112,7 @@ fromNow('2030-05-20', {
 ```
 
 #### Indicate Past Tense
-```javascript
+```js
 fromNow('12/31/2010', {
   max: 3,
   ago: true
@@ -103,7 +120,7 @@ fromNow('12/31/2010', {
 ```
 
 #### Include 'and' in the Output
-```javascript
+```js
 fromNow('12/31/2010', {
   max: 3,
   ago: true,

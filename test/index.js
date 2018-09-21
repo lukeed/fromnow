@@ -1,17 +1,8 @@
 const test = require('tape');
-const fn = require('../fromNow');
+const fn = require('../dist/fromnow');
 
-const DATE = global.Date;
 const target = 'Sun Jun 14 2015 15:12:05';
-
-global.Date = class Mock extends DATE {
-  constructor(val) {
-    super(val || target);
-  }
-  now() {
-    return new DATE(target).getTime();
-  }
-}
+global.Date.now = () => new Date(target).getTime();
 
 test('exports', t => {
   t.is(typeof fn, 'function', 'exports a function');
@@ -29,6 +20,16 @@ test('fromNow', t => {
   ].forEach(arr => {
     t.is(fn(arr[0]), arr[1], `fn("${arr[0]}") ~> "${arr[1]}"`);
   });
+  t.end();
+});
+
+test('fromNow :: now', t => {
+  var foo = fn(target);
+  t.is(foo, 'just now', `fn(NOW) ~> "just now"`);
+
+  var bar = fn(target, { and:true, ago:true, max:1 });
+  t.is(bar, 'just now', `fn(NOW, { and:true, ago:true, max:1 }) ~> "just now"`);
+
   t.end();
 });
 
@@ -56,5 +57,24 @@ test('fromNow :: options.and', t => {
   t.is( fn('12/31/2013', { max:3, ago:true, and:true }), '1 year, 5 months, and 20 days ago', '~> adds "and" for 2+ segments');
   t.is( fn('12/31/2013', { max:1, ago:true, and:true }), '1 year ago', '~> omits "and" for 1 segment');
   t.is( fn('12/31/2030', { max:1, ago:true, and:true }), '15 years', '~> omits "and" for 1 segment');
+  t.end();
+});
+
+test('fromNow :: options.zero=false', t => {
+  // target = 'Sun Jun 14 2015 15:12:05'
+  t.is(fn('Sun Jun 14 2015 15:14:05'), '2 minutes', '~> strips all 0-based segments by default');
+  t.is(fn('Sun Jun 14 2015 14:09:05', { and:true, ago:true }), '1 hour and 3 minutes ago', '~> strips 0; works with `ago` & `and` options');
+  t.is(fn('Sun Jun 14 2015 14:09:05', { ago:true, max:1 }), '1 hour ago', '~> using `max:1` keeps 1st significant segment only');
+
+  t.end();
+});
+
+test('fromNow :: options.zero=true', t => {
+  // target = 'Sun Jun 14 2015 15:12:05'
+
+  t.is(fn('Sun Jun 14 2015 15:14:05', { zero:true }), '0 year, 0 month, 0 day, 0 hour, 2 minutes');
+  t.is(fn('Sun Jun 14 2015 14:09:05', { zero:true, and:true, ago:true }), '0 year, 0 month, 0 day, 1 hour, and 3 minutes ago');
+  t.is(fn('Sun Jun 14 2015 14:09:05', { zero:true, ago:true, max:1 }), '0 year ago');
+
   t.end();
 });
