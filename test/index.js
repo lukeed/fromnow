@@ -23,6 +23,16 @@ test('fromNow', t => {
   t.end();
 });
 
+test('fromNow :: now', t => {
+  var foo = fn(target);
+  t.is(foo, 'just now', `fn(NOW) ~> "just now"`);
+
+  var bar = fn(target, { and:true, ago:true, max:1 });
+  t.is(bar, 'just now', `fn(NOW, { and:true, ago:true, max:1 }) ~> "just now"`);
+
+  t.end();
+});
+
 test('fromNow :: options.max', t => {
   [
     ['12/31/2013', 3, '1 year, 5 months, 20 days'],
