@@ -4,6 +4,8 @@ var DAY = HOUR * 24;
 var YEAR = DAY * 365;
 var MONTH = DAY * 30;
 
+var PERIODS = ['year', 'month', 'day', 'hour', 'minute'];
+
 export default function (date, opts) {
 	opts = opts || {};
 
@@ -12,37 +14,34 @@ export default function (date, opts) {
 
 	if (abs < MIN) return 'just now';
 
-	var timeframes = {
-		year: Math.floor(abs / YEAR),
-		month: Math.floor((abs % YEAR) / MONTH),
-		day: Math.floor((abs % MONTH) / DAY),
-		hour: Math.floor((abs % DAY) / HOUR),
-		minute: Math.floor((abs % HOUR) / MIN)
-	};
+	var periods = [
+		abs / YEAR, // years
+		(abs % YEAR) / MONTH, // months
+		(abs % MONTH) / DAY, // days
+		(abs % DAY) / HOUR, // hours
+		(abs % HOUR) / MIN, // mins
+	];
 
-	var chunks=[], period, val;
-	for (period in timeframes) {
-		val = timeframes[period];
-		chunks.push(
-			val + ' ' + ((val > 1) ? (period + 's') : period)
-		);
+	var i=0, val, sfx, keep=[], max=opts.max || YEAR; // large number
+	while (i < periods.length && keep.length < max) {
+		val = Math.floor(periods[i]);
+		sfx = PERIODS[i++]; // increments
+		keep.push(val + ' ' + ((val > 1) ? (sfx + 's') : sfx));
 	}
 
-	// Limit the returned array to return 'max' of non-null segments
-	var i=0, limit=0, compiled=[], len=chunks.length, max=opts.max || 10;
-	for (; i < len; i++) {
-		if (chunks[i] && limit < max) {
-			limit++;
-			compiled.push(chunks[i]);
-		}
+	i = keep.length;
+	sfx = ', ';
+
+	if (i > 1 && opts.and) {
+		if (i == 2) sfx = ' ';
+		keep[--i] = 'and ' + keep[i];
 	}
 
-	var sfx = (opts.ago && del < 0) ? ' ago' : '';
+	val = keep.join(sfx);
 
-	if (opts.and && limit > 1) {
-		if (limit === 2) return compiled.join(' and ') + sfx;
-		compiled[limit - 1] = 'and ' + compiled[limit - 1];
+	if (opts.ago && del < 0) {
+		val += ' ago';
 	}
 
-	return compiled.join(', ') + sfx;
+	return val;
 }
