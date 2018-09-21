@@ -29,15 +29,15 @@ export default function (date, opts) {
 		}
 	}
 
-	abs = keep.length; // reuse
-	k = ', '; // reuse
+	k = keep.length; // reuse
+	max = ', '; // reuse
 
-	if (abs > 1 && opts.and) {
-		if (abs == 2) k = ' ';
-		keep[--abs] = 'and ' + keep[abs];
+	if (k > 1 && opts.and) {
+		if (k == 2) max = ' ';
+		keep[--k] = 'and ' + keep[k];
 	}
 
-	val = keep.join(k); // reuse
+	val = keep.join(max); // reuse
 
 	if (opts.ago && del < 0) {
 		val += ' ago';
