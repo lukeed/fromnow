@@ -1,17 +1,8 @@
 const test = require('tape');
 const fn = require('../dist/fromnow');
 
-const DATE = global.Date;
 const target = 'Sun Jun 14 2015 15:12:05';
-
-global.Date = class Mock extends DATE {
-  constructor(val) {
-    super(val || target);
-  }
-  now() {
-    return new DATE(target).getTime();
-  }
-}
+global.Date.now = () => new Date(target).getTime();
 
 test('exports', t => {
   t.is(typeof fn, 'function', 'exports a function');
