@@ -10,9 +10,8 @@ var MONTH = DAY * 30;
 
 export default function (date, opts) {
 	opts = opts || {};
-	date = new Date(date).getTime();
 
-	var del = date - Date.now();
+	var del = new Date(date).getTime() - Date.now();
 	var abs = Math.abs(del);
 
 	if (abs < MIN) return 'just now';
