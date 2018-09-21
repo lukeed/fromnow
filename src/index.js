@@ -40,10 +40,8 @@ export default function (date, opts) {
 
 	val = keep.join(max); // reuse
 
-	if (opts.ago && del < 0) {
-		val += ' ago';
-	} else if (opts.future && del > 0) {
-		val += ' from now';
+	if (opts.suffix) {
+		val += (del < 0 ? ' ago' : ' from now');
 	}
 
 	return val;

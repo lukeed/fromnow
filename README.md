@@ -48,31 +48,44 @@ Default: `null`
 
 If set, will limits the return to display a *maximum* number of non-null segments.
 
-```js
-// default
-"1 month, 0 hours, 57 minutes"
+> **Important:** When `opts.zero = true` then empty segments will count towards your `max` limit!
 
-// max = 2
-"1 month, 57 minutes"
+```js
+// zero=true
+"2 years, 0 month, 12 hours, 57 minutes"
+
+// zero=true; max=2
+"2 years, 0 month"
+
+// zero=false
+"2 years, 12 hours, 57 minutes"
+
+// zero=false; max=2
+"2 years, 12 hours"
 ```
 
-#### options.ago
+#### options.suffix
 
 Type: `Boolean`<br>
 Default: `false`
 
-If handling a date from the past, append `"ago"` to the output.
+Appends `"ago"` or `"from now`" to the output.
 
 ```js
-"3 months, 16 minutes"
-//=> "3 months, 16 minutes ago"
+// NOW = "Sun Jun 14 2015 15:12:05"
+
+fromNow("Sun Jun 14 2015 14:09:05", { and:true, suffix:true });
+//=> "1 hour and 3 minutes ago"
+
+fromNow("Sun Jun 14 2017 14:09:05", { and:true, suffix:true, max:2 });
+//=> "2 years and 10 days from now"
 ```
 
 #### options.and
 Type: `Boolean`<br>
 Default: `false`
 
-If true, will join the last two segments with `" and "`.
+Join the last two segments with `" and "`.
 
 ```js
 "1 year, 4 hours, 16 minutes"
@@ -86,7 +99,7 @@ If true, will join the last two segments with `" and "`.
 Type: `Boolean`<br>
 Default: `false`
 
-Return / allow segments with `0` value.
+Return segments with `0` value.
 
 ```js
 // NOW = "Sun Jun 14 2015 15:12:05"
@@ -101,44 +114,37 @@ fromNow("Sun Jun 14 2015 15:14:05", { zero:true });
 ## Examples
 
 #### Limit the Output
-```js
-fromNow('12/31/2010', {
-  max: 3
-}); //=> "4 years, 10 months, 8 days"
 
-fromNow('2030-05-20', {
-  max: 2
-}); //=> "14 years, 6 months"
+```js
+fromNow('12/31/2010', { max:3 });
+//=> "4 years, 10 months, 8 days"
+
+fromNow('2030-05-20', { max:2 });
+//=> "14 years, 6 months"
 ```
 
-#### Indicate Past Tense
+#### Indicate Past or Future Tense
+
 ```js
-fromNow('12/31/2010', {
-  max: 3,
-  ago: true
-}); //=> "4 years, 10 months, 8 days ago"
+fromNow('12/31/2010', { max:3, suffix:true });
+//=> "4 years, 10 months, 8 days ago"
+
+fromNow('12/31/2030', { max:1, suffix:true });
+//=> "12 years from now"
 ```
 
 #### Include 'and' in the Output
+
 ```js
-fromNow('12/31/2010', {
-  max: 3,
-  ago: true,
-  and: true
-}); //=> "4 years, 10 months, and 8 days ago"
+fromNow('12/31/2010', { max:3, suffix:true, and:true });
+//=> "4 years, 10 months, and 8 days ago"
 
-fromNow('Wed, 20 Nov 1912 00:00:00 GMT', {
-  max: 2,
-  ago: true,
-  and: true
-}); //=> "103 years and 23 days ago"
+fromNow('Wed, 20 Nov 1912 00:00:00 GMT', { max:2, suffix:true, and:true });
+//=> "103 years and 23 days ago"
 
-// Does not need 'ago' or 'and'
-fromNow('2030-05-20', {
-  max: 1,
-  ago: true,
-  and: true
-}); //=> "14 years"
+// Will only apply on 2+ segments
+fromNow('2030-05-20', { max:1, and:true });
+//=> "14 years"
 ```
 
 
