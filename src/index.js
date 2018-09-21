@@ -4,8 +4,6 @@ var DAY = HOUR * 24;
 var YEAR = DAY * 365;
 var MONTH = DAY * 30;
 
-var PERIODS = ['year', 'month', 'day', 'hour', 'minute'];
-
 export default function (date, opts) {
 	opts = opts || {};
 
@@ -14,30 +12,32 @@ export default function (date, opts) {
 
 	if (abs < MIN) return 'just now';
 
-	var periods = [
-		abs / YEAR, // years
-		(abs % YEAR) / MONTH, // months
-		(abs % MONTH) / DAY, // days
-		(abs % DAY) / HOUR, // hours
-		(abs % HOUR) / MIN, // mins
-	];
+	var periods = {
+		year: abs / YEAR,
+		month: (abs % YEAR) / MONTH,
+		day: (abs % MONTH) / DAY,
+		hour: (abs % DAY) / HOUR,
+		minute: (abs % HOUR) / MIN,
+	};
 
-	var i=0, val, sfx, keep=[], max=opts.max || YEAR; // large number
-	while (i < periods.length && keep.length < max) {
-		val = Math.floor(periods[i]);
-		sfx = PERIODS[i++]; // increments
-		keep.push(val + ' ' + ((val > 1) ? (sfx + 's') : sfx));
+	var k, val, keep=[], max=opts.max || YEAR; // large number
+
+	for (k in periods) {
+		if (keep.length < max) {
+			val = Math.floor(periods[k]);
+			keep.push(val + ' ' + ((val > 1) ? (k + 's') : k));
+		}
 	}
 
-	i = keep.length;
-	sfx = ', ';
+	abs = keep.length; // reuse
+	k = ', '; // reuse
 
-	if (i > 1 && opts.and) {
-		if (i == 2) sfx = ' ';
-		keep[--i] = 'and ' + keep[i];
+	if (abs > 1 && opts.and) {
+		if (abs == 2) k = ' ';
+		keep[--abs] = 'and ' + keep[abs];
 	}
 
-	val = keep.join(sfx);
+	val = keep.join(k); // reuse
 
 	if (opts.ago && del < 0) {
 		val += ' ago';
