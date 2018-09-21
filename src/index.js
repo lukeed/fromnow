@@ -26,7 +26,7 @@ export default function (date, opts) {
 		if (keep.length < max) {
 			val = Math.floor(periods[k]);
 			if (!val && !opts.zero) continue;
-			keep.push(val + ' ' + ((val > 1) ? (k + 's') : k));
+			keep.push(val + ' ' + ((val == 1) ? k : (k + 's')));
 		}
 	}
 

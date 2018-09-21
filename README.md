@@ -52,10 +52,10 @@ If set, will limits the return to display a *maximum* number of non-null segment
 
 ```js
 // zero=true
-"2 years, 0 month, 12 hours, 57 minutes"
+"2 years, 0 months, 12 hours, 57 minutes"
 
 // zero=true; max=2
-"2 years, 0 month"
+"2 years, 0 months"
 
 // zero=false
 "2 years, 12 hours, 57 minutes"
@@ -108,7 +108,7 @@ fromNow("Sun Jun 14 2015 15:14:05");
 //=> "2 minutes"
 
 fromNow("Sun Jun 14 2015 15:14:05", { zero:true });
-//=> "0 year, 0 month, 0 day, 0 hour, 2 minutes"
+//=> "0 years, 0 months, 0 days, 0 hours, 2 minutes"
 ```
 
 ## Examples
