@@ -1,8 +1,8 @@
 {
   "name": "fromnow",
   "version": "2.2.1",
-  "repository": "lukeed/fromNow",
-  "description": "A tiny (421B) utility for calculating human-readable time differences between now and past/future dates.",
+  "repository": "lukeed/fromnow",
+  "description": "A tiny (363B) utility for calculating human-readable time differences between now and past/future dates.",
   "unpkg": "dist/fromnow.min.js",
   "module": "dist/fromnow.mjs",
   "main": "dist/fromnow.js",
