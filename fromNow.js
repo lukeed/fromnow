@@ -54,9 +54,22 @@
 				compiled.push(chunks[i]);
 			}
 		}
+		
+		if(opts.moment){
+			var compiled=[];
+      			for (i=chunks.length - 1; i > -1; i--) {
+        			if(chunks[i].split(' ')[0] > 0){
+          				compiled[0] = String(chunks[i].split(' ')[0] + ' ' + chunks[i].split(' ')[1]);
+        			}
+      			}
+    		}
 
-		var sfx = (opts.ago && milli < 0) ? ' ago' : '';
-
+    		if(milli < 0){
+      			var sfx = (opts.ago) ? ' ago' : '';
+    		}else{
+      			var sfx = (opts.ago) ? ' from now' : '';
+    		}
+		
 		if (opts.and && limit > 1) {
 			if (limit === 2) return compiled.join(' and ') + sfx;
 			compiled[limit - 1] = 'and ' + compiled[limit - 1];
