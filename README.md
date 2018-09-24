@@ -111,6 +111,29 @@ fromNow("Sun Jun 14 2015 15:14:05", { zero:true });
 //=> "0 years, 0 months, 0 days, 0 hours, 2 minutes"
 ```
 
+#### options.i18n
+Type: `Object`<br>
+Default: `undefined`
+
+Set the localisation.
+
+```js
+var i18nData = {
+  past: 'fa',
+  future: 'da ora',
+  now: 'proprio ora',
+  and: 'e',
+  year: ['anno', 'anni'],
+  month: ['mese', 'mesi'],
+  day: ['giorno', 'giorni'],
+  hour: ['ora', 'ore'],
+  minute: ['minuto', 'minuti'],
+};
+fromNow("Sun Jun 14 2015 15:14:05", { zero:true , i18n: i18nData});
+//=> "0 anni, 0 mesi, 0 giorni, 0 ore, 2 minuti"
+
+```
+
 ## Examples
 
 #### Limit the Output
