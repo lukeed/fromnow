@@ -75,6 +75,5 @@ test('fromNow :: options.zero=true', t => {
   t.is(fn('Sun Jun 14 2015 14:09:05', { zero:true, and:true, suffix:true }), '0 years, 0 months, 0 days, 1 hour, and 3 minutes ago');
   t.is(fn('Sun Jun 14 2017 14:09:05', { zero:true, and:true, suffix:true, max:2 }), '2 years and 0 months from now');
   t.is(fn('Sun Jun 14 2015 14:09:05', { zero:true, suffix:true, max:1 }), '0 years ago');
-
   t.end();
 });
