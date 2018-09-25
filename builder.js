@@ -17,7 +17,7 @@ mkdir('dist').then(_ => {
 	fs.writeFileSync(pkg.main, data);
 
 	// Uglify & print gzip size
-	const { code } = minify(data);
+	const { code } = minify(data, { toplevel:true });
 	const int = sizer.sync(code);
 	console.log(`> gzip size: ${pretty(int)}`);
 
