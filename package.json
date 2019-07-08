@@ -6,8 +6,10 @@
   "unpkg": "dist/fromnow.min.js",
   "module": "dist/fromnow.mjs",
   "main": "dist/fromnow.js",
+  "types": "fromnow.d.ts",
   "license": "MIT",
   "files": [
+    "*.d.ts",
     "dist"
   ],
   "author": {
