@@ -1,4 +1,4 @@
-var MIN = 60 * 1e3;
+var MIN = 60e3;
 var HOUR = MIN * 60;
 var DAY = HOUR * 24;
 var YEAR = DAY * 365;
@@ -20,13 +20,14 @@ export default function (date, opts) {
 		minute: (abs % HOUR) / MIN,
 	};
 
-	var k, val, keep=[], max=opts.max || YEAR; // large number
+	var k, val, keep=[], max=opts.max || MIN; // large number
 
 	for (k in periods) {
 		if (keep.length < max) {
 			val = Math.floor(periods[k]);
-			if (!val && !opts.zero) continue;
-			keep.push(val + ' ' + ((val == 1) ? k : (k + 's')));
+			if (val || opts.zero) {
+				keep.push(val + ' ' + ((val == 1) ? k : (k + 's')));
+			}
 		}
 	}
 
