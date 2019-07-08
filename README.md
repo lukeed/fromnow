@@ -1,6 +1,6 @@
-# FromNow [![Build Status](https://travis-ci.org/lukeed/fromnow.svg?branch=master)](https://travis-ci.org/lukeed/fromnow)
+# FromNow [![Build Status](https://badgen.now.sh/travis/lukeed/fromnow)](https://travis-ci.org/lukeed/fromnow)
 
-> A tiny (355B) utility for human-readable time differences between now and past or future dates.
+> A tiny (349B) utility for human-readable time differences between now and past or future dates.
 
 ## Install
 
